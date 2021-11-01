@@ -6,6 +6,12 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @active = set_student.active ? "active" : "inactive"
+  end
+
+  def activate
+    set_student.toggle!(:active)
+    redirect_to student_path
   end
 
   private
